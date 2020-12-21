@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {render, screen, waitFor} from '@testing-library/react';
+import {render} from '@testing-library/react';
 
 //import {getRatesForPeriod} from '../api';
 
