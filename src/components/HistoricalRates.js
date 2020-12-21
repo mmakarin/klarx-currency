@@ -1,10 +1,9 @@
 import {useState, useEffect, useCallback} from 'react';
-import dayjs from 'dayjs';
 import {TextField, Typography} from '@material-ui/core';
 
 import {getHistoricalRates} from '../api';
 import {uncappedMap} from '../utils/lodash+';
-import {DATE_FORMAT} from '../utils/date';
+import {dayjs, DATE_FORMAT} from '../utils/date';
 
 import CurrencyPairExchanger from '../components/CurrencyPairExchanger';
 

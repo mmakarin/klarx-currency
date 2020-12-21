@@ -1,9 +1,9 @@
 import {useState, useEffect} from 'react';
-import dayjs from 'dayjs';
 import {Typography} from '@material-ui/core';
 
 import {getLatestRates} from '../api';
 import {uncappedMap} from '../utils/lodash+';
+import {dayjs} from '../utils/date';
 
 import CurrencyPairExchanger from './CurrencyPairExchanger';
 

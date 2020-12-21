@@ -1,9 +1,8 @@
 import axios from 'axios';
 import CurrencyLayerClient from 'currencylayer-client';
-import dayjs from 'dayjs';
 import {mapValues, mapKeys, pick, flow, range, map} from 'lodash/fp';
 
-import {DATE_FORMAT} from '../utils/date';
+import {dayjs, DATE_FORMAT} from '../utils/date';
 
 const currencylayerApi = new CurrencyLayerClient({apiKey: '2b4acb5317a034357381372dac9051b9'});
 

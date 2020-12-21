@@ -48,17 +48,6 @@ const CurrencyPairExchanger = ({style, baseCurrency, targetCurrency, rate}) => {
         [inputValue, activeInput, rate]
     );
 
-    // Update input value on active input change
-    /* useEffect(
-        () => setInputValue(inputValue => {
-            return inputValue
-            ? ((activeInput === 'base' && baseAmount.toFixed(PRECISION)) ||
-                (activeInput === 'target' && targetAmount.toFixed(PRECISION)))
-            : '';
-        }),
-        [activeInput, baseAmount, targetAmount]
-    ); */
-
     const handleInput = useCallback(
         e => {
             const val = e.target.value;
@@ -86,20 +75,21 @@ const CurrencyPairExchanger = ({style, baseCurrency, targetCurrency, rate}) => {
                 ...styles.root,
                 ...style
             }}
-            //onBlur={() => setActiveInput(null)}
         >
             <TextField
                 step={1}
                 type='number'
+                name='currencyExchangerBase'
                 inputProps={{min: 0}}
                 label={baseCurrency}
+                id='currencyExchangerBase'
+                InputLabelProps={{name: baseCurrency}}
                 value={activeInput === 'base'
                     ? inputValue
                     : (baseAmount ? baseAmount.toFixed(PRECISION) : '')}
                 variant='outlined'
                 helperText={`Conversion rate 1 ${baseCurrency} = ${rate} ${targetCurrency}`}
                 onChange={handleInput}
-                //onFocus={() => setActiveInput('base')}
                 onFocus={handleBaseFocus}
             />
 
@@ -107,14 +97,16 @@ const CurrencyPairExchanger = ({style, baseCurrency, targetCurrency, rate}) => {
 
             <TextField
                 type='number'
+                name='currencyExchangerTarget'
                 inputProps={{min: 0}}
                 label={targetCurrency}
+                id='currencyExchangerTarget'
+                InputLabelProps={{name: targetCurrency}}
                 variant='outlined'
                 value={activeInput === 'target'
                     ? inputValue
                     : (targetAmount ? targetAmount.toFixed(PRECISION) : '')}
                 onChange={handleInput}
-                //onFocus={() => setActiveInput('target')}
                 onFocus={handleTargetFocus}
             />
         </div>

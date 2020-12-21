@@ -52,7 +52,7 @@ const LineChart = ({data}) => {
         <div style={styles.chartContainer}>
             <ResponsiveLine
                 data={data}
-                margin={{top: 20, right: 10, bottom: 20, left: CHART_OFFSET}}
+                margin={{top: 20, right: 20, bottom: 20, left: CHART_OFFSET}}
                 //xScale={{ type: 'point' }}
                 xScale={{
                     type: 'time',
@@ -67,7 +67,7 @@ const LineChart = ({data}) => {
                 enableSlices='x'
                 axisBottom={{
                     format: '%b %d',
-                    tickValues: 'every 2 days',
+                    tickValues: 'every 1 days',
                     legend: 'Date',
                     legendOffset: -12,
                 }}
