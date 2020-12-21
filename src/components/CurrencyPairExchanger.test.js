@@ -1,4 +1,4 @@
-import {fireEvent, render, screen} from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import CurrencyPairExchanger from './CurrencyPairExchanger';
@@ -24,15 +24,13 @@ describe('<CurrencyPairExchanger />', () => {
         render(<CurrencyPairExchanger baseCurrency='EUR' targetCurrency='CHF' rate={rate} />);
 
         const baseInput = screen.getByLabelText('EUR');
-        fireEvent.change(baseInput, {
-            target: {
-                value: '25'
-            }
-        });
+        userEvent.clear(baseInput);
+        userEvent.type(baseInput, '25');
 
         const targetInput = screen.getByLabelText('CHF');
         expect(targetInput).toHaveDisplayValue('27.1125');
     });
+
     it('converts CHF to EUR initially', () => {
         const rate = 1.0845;
         render(<CurrencyPairExchanger baseCurrency='EUR' targetCurrency='CHF' rate={rate} />);
@@ -43,6 +41,17 @@ describe('<CurrencyPairExchanger />', () => {
 
         const baseInput = screen.getByLabelText('EUR');
         expect(baseInput).toHaveDisplayValue('32.2729');
+    });
+
+    it('clears other input on empty value', () => {
+        const rate = 1.0845;
+        render(<CurrencyPairExchanger baseCurrency='EUR' targetCurrency='CHF' rate={rate} />);
+
+        const baseInput = screen.getByLabelText('EUR');
+        userEvent.clear(baseInput);
+
+        const targetInput = screen.getByLabelText('CHF');
+        expect(targetInput).toHaveDisplayValue('');
     });
 
     it('values don\'t change when clicking other input', () => {
